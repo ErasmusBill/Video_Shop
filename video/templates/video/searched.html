@@ -1,0 +1,30 @@
+{% extends 'video/base.html' %}
+
+{% block title %}GH-Melody Search{% endblock %}
+
+{% block content %}
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for video in videos %}
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{{ video.thumbnails.url }}" class="bd-placeholder-img card-img-top" width="400" height="225" alt="Thumbnail">
+          <div class="card-body">
+            <h5 class="card-title">{{ video.title }}</h5>
+            <p class="card-text">{{ video.description }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a href="{{ video.video_url }}" class="btn btn-primary">Watch</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

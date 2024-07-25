@@ -1,0 +1,60 @@
+{% extends 'video/base.html' %}
+
+{% block title %}GH-Melody Home{% endblock %}
+
+{% block content %}
+<div id="videoCarousel" class="carousel slide mt-3" data-ride="carousel">
+  <ol class="carousel-indicators">
+    {% for upcoming_video in upcoming_videos %}
+      <li data-target="#videoCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+    {% endfor %}
+  </ol>
+  <div class="carousel-inner">
+    {% for upcoming_video in upcoming_videos %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <a href="https://www.youtube.com/watch?v={{ upcoming_video.video_id }}" target="_blank">
+          <img src="{{ upcoming_video.thumbnails.url }}" class="d-block w-100" alt="{{ upcoming_video.title }}">
+        </a>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ upcoming_video.title }}</h5>
+          <p>{{ upcoming_video.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <a class="carousel-control-prev" href="#videoCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#videoCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<!-- After Carousel -->
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for video in videos %}
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{{ video.thumbnails.url }}" class="bd-placeholder-img card-img-top" width="400" height="225" alt="Thumbnail">
+          <div class="card-body">
+            <h5 class="card-title">{{ video.title }}</h5>
+            <p class="card-text">{{ video.description }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a href="{{ video.video_url }}" class="btn btn-primary">Watch</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

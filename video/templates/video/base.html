@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+    .video-thumbnail {
+      width: 100%;
+      height: 300px; /* Adjust the height as needed */
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .navbar-brand img {
+      max-height: 40px;
+    }
+    .card {
+    margin-bottom: 20px;
+    }
+    .carousel-item img {
+            object-fit: cover;
+            width: 100%;
+            height: 600px;
+    }
+    .carousel-caption {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+        }  
+        .about-section {
+            padding: 60px 0;
+            background: #f9f9f9;
+        }
+        .about-img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .team-member img {
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .team-member h5 {
+            margin-bottom: 0;
+        }
+        .team-member small {
+            color: #888;
+        }
+        #imageCarousel {
+        max-width: 500px; /* Adjust as needed */
+        margin: 0 auto; /* Center carousel */
+    }      
+  </style>
+</head>
+<body>
+    {% if messages %}
+              {% for message in messages %}
+               
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                     {{ message }}
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              {% endfor %}
+        {% endif %}      
+    
+    {% include 'video/navbar.html' %}
+
+    {% block content %}
+
+
+    {% endblock %}
+    <!---------Footer---------->
+    <div class="container mt-5 pt-5" id="contact">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Contact Us</h2>
+                <ul class="list-unstyled">
+                    <li><strong>Email:</strong> <a href="mailto:example@example.com">example@example.com</a></li>
+                    <li><strong>Phone:</strong> +233 209 501 103</li>
+                    <li><strong>Address:</strong> 69 Beach Drive, Accra-Ghana</li>
+                </ul>
+                <h4>Follow Us</h4>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="https://facebook.com" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com" target="_blank" class="btn btn-info">
+                            <i class="fab fa-twitter"></i> Twitter
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://instagram.com" target="_blank" class="btn btn-danger">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="www.youtube.com/@Ghmelodytv" target="_blank" class="btn btn-danger">
+                            <i class="fab fa-youtube"></i> YouTube
+                        </a>
+                    </li>
+                </ul>
+                <div id="map" style="height: 400px; width: 100%;"></div>
+            </div>
+            <div class="col-md-6">
+                <h2 id="contact">Send Us a Message</h2>
+                <form action="" method="POST" action="{% url 'video:index' %}">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" class="form-control" id="subject" placeholder="Subject" name="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" rows="5" placeholder="Your message" name="message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+    // Initialize and add the map
+    function initMap() {
+        // The location
+        const location = { lat: 5.596611, lng: -0.070812 }; // Coordinates for the specified location
+        // The map, centered at location
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 14,
+            center: location,
+        });
+        // The marker, positioned at location
+        const marker = new google.maps.Marker({
+            position: location,
+            map: map,
+        });
+    }
+</script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+
+</body>
+</html>
