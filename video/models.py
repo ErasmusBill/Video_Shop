@@ -1,4 +1,4 @@
--from django.db import models
+from django.db import models
 from django.utils import timezone
 
 # Create your models here.
@@ -31,6 +31,7 @@ class Team(models.Model):
         return self.name
     
 class Authorities(models.Model): 
+    #team = models.ForeignKey(Team, on_delete=models.CASCADE)
     name = models.CharField(max_length=100,default=None)
     role = models.CharField(max_length=100,default=None)
     image = models.ImageField(upload_to='media')

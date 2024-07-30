@@ -56,5 +56,10 @@ def search(request):
 
 def about(request):
     upcoming_videos = Upcoming_video.objects.all()
-    teams = Team.objects.all()
-    return render(request, 'video/about.html',{'upcoming_videos':upcoming_videos,'teams':teams})
+    authorities = Authorities.objects.all()
+    #teams = Team.objects.all()
+    return render(request, 'video/about.html',{'upcoming_videos':upcoming_videos,'authorities':authorities})
+
+def values(request):
+    upcoming_videos = Upcoming_video.objects.all()
+    return render(request, 'video/values.html',{'upcoming_videos':upcoming_videos})

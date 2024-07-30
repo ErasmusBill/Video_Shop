@@ -39,12 +39,20 @@
     <div class="row">
         <div class="col-lg-6">
             <h1 class="mt-4">About Us</h1>
-            <p class="lead">GH Melody TV is more than just a brand name - it's a reflection of my heart and soul. 'GH' represents, and also symbolizes 'God's Harmony' - a reminder that life is a beautiful symphony of ups and downs. 'Melody' represents the music that fills my heart and inspires my creativity.</p>
-            <p> GH melody TV represents the platform I've chosen to share my story, passions, and inspiration with the world. </p>
-            <p>GH Melody TV is a brand that stands for hope, inspiration, and joy - a reminder that life is a precious gift, and we should make the most of it by living our truth and sharing our unique melody with others.</p>
+            <p class="lead">Welcome to GH Melody TV, where the rhythm of storytelling comes alive on the big screen! Our mission is to produce captivating films that resonate with audiences worldwide.
+
+              GH Melody TV is more than just a brand name - it's a reflection of my heart and soul. 'GH' represents, and also symbolizes 'God's Harmony' - a reminder that life is a beautiful symphony of ups and downs. 'Melody' represents the music that fills my heart and inspires my creativity. And 'TV' represents the platform I've chosen to share my story, passions, and inspiration with the world. GH Melody TV is a brand that stands for hope, inspiration, and joy - a reminder that life is a precious gift, and we should make the most of it by living our truth and sharing our unique melody with others.
+              
+            </p>
+            <h1 class="mt-4">Our Story</h1>
+            <p>GH Melody TV was founded by Emmanuel Steve Raimi, a passionate filmmaker driven by a love for storytelling and music., GH Melody TV, represents the harmony of sound and vision, where every frame is a note in the rhythm of storytelling.
+            </p>
+            <h1 class="mt-4">Our Slogan</h1>
+            <p>The Rhythm Of Storytelling" embodies our approach to filmmaking - weaving together vibrant visuals, captivating narratives, and memorable characters to create an unforgettable cinematic experience.
+            </p>
         </div>
         
-        <div class="col-lg-6" style="margin-top: 50px; margin-bottom: 50px;">
+        <div class="col-lg-6" style="margin-top: 120px; margin-bottom: 1px;">
             <div id="imageCarousel" class="carousel slide" data-ride="carousel" >
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -77,13 +85,15 @@
     <div class="container">
         <h2 class="text-center mb-5">Meet Our Team</h2>
         <div class="row">
-            {% for team in teams %}
+            {% for authority in authorities %}
             <div class="col-md-4 team-member">
                 
-                <img src="{{ team.image.url }}" alt="Team Member 1" class="img-fluid" width="150">
+                <img src="{{ authority.image.url }}" alt="Team Member 1" class="img-fluid" width="150">
                
-                <h5>{{ team.name }}</h5>
-                <small>CEO & Founder</small>
+                <h5>{{ authority.role }}</h5>
+                
+                <small>{{ authority.name }}</small>
+                
                
             </div>
             <!--------
