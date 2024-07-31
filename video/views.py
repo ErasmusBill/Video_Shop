@@ -24,14 +24,19 @@ def index(request):
        
         try:
             email_message = EmailMessage(
-                subject=f"Message from {name}: {subject}",
-                body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}",
+                subject=f"Message from {name}",
+                body=f"""
+                Name: {name}
+                Email: {email}
+                Message: {message}
+                """,
                 from_email=email,
-                to=["erasmuschawey12345@gmail.com"],
+                to=["ghmelodytv@gmail.com"],
             )
+            
             email_message.send()
             messages.success(request, "Email sent successfully!")
-            return redirect('video:index')
+            return redirect('video:index')  
         
         except Exception as e:
             messages.error(request, f"Error sending email: {e}")
